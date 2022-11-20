@@ -4,7 +4,7 @@ from django.utils import timezone
 
 # donde guardaremos la imagen
 def user_directory_path(instance, filename):
-    return 'anime/{0}/{1}'.format(instance.title, filename)
+    return 'anime/{0}/{1}'.format(instance.titulo, filename)
 
 
 class Anime(models.Model):

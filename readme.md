@@ -128,3 +128,83 @@ python manage.py startapp anime
 python manage.py makemigrations
 python manage.py migrate
 ```
+
+13. Registramos el modelo en admin.py
+
+```
+from .models import Anime
+
+# Register your models here.
+admin.site.register(Anime)
+```
+
+14. Creamos superusuario
+
+```
+python manage.py createsuperuser
+root:root
+```
+
+15. Creamos el serializer
+
+```
+from .models import Anime
+
+
+class AnimeSerializer(serializers.ModelSerializer):
+    class Meta:
+        # fields = '__all__'
+        model = Anime
+        fields = ('id', 'titulo', 'descripcion', 'image', 'slug', 'concluido', 'estado')
+```
+
+16. Creamos el viewset
+
+```
+from django.shortcuts import render, get_object_or_404
+from rest_framework.views import APIView
+from rest_framework.response import Response
+
+from .models import Anime
+from .serializers import AnimeSerializer
+
+
+# Create your views here.
+
+
+class BlogListView(APIView):
+    def get(self, request, *args, **kwargs):
+        # get post                  #los promeros 5
+        animes = Anime.animeObjects.all()[0:5]
+        serializer = AnimeSerializer(animes, many=True)
+
+        return Response(serializer.data)
+
+
+class AnimeDetailView(APIView):
+    def get(self, request, anime_slug, *args, **kwargs):
+        anime = get_object_or_404(Anime, slug=anime_slug)
+        serializer = AnimeSerializer(anime)
+        return Response(serializer.data)
+```
+
+17. Creamos el urls.py
+
+```
+from django.urls import path
+from .views import AnimeListView, AnimeDetailView
+
+
+app_name = "anime"
+
+urlpatterns = [
+    path('animes/', AnimeListView.as_view(), name='anime-list'),
+    path('anime/<anime_slug>/', AnimeDetailView.as_view(), name='anime-detail'),
+]
+```
+
+18. Agregamos las urls a la principal
+
+```
+path('anime/', include('anime.urls', namespace='anime')),
+```
