@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils import timezone
 
 
 # donde guardaremos la imagen
@@ -21,6 +22,7 @@ class Anime(models.Model):
     descripcion = models.TextField()
     image = models.ImageField(upload_to=user_directory_path, blank=True, null=True)
     slug = models.SlugField(max_length=250, unique_for_date='concluido', null=False, unique=True)
+    concluido = models.DateTimeField(default=timezone.now)
     estado = models.CharField(max_length=10, choices=options, default='emision')
 
     objects = models.Manager()  # default manager
