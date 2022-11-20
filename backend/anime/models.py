@@ -17,11 +17,11 @@ class Anime(models.Model):
         ('concluido', 'Concluido'),
     )
 
-    title = models.CharField(max_length=200)
-    description = models.TextField()
+    titulo = models.CharField(max_length=200)
+    descripcion = models.TextField()
     image = models.ImageField(upload_to=user_directory_path, blank=True, null=True)
     slug = models.SlugField(max_length=250, unique_for_date='concluido', null=False, unique=True)
-    status = models.CharField(max_length=10, choices=options, default='emision')
+    estado = models.CharField(max_length=10, choices=options, default='emision')
 
     objects = models.Manager()  # default manager
     animeObjects = AnimeObjects()  # custom manager
@@ -30,4 +30,4 @@ class Anime(models.Model):
         ordering = ('-concluido',)
 
     def __str__(self):
-        return self.title
+        return self.titulo
