@@ -31,6 +31,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    # My APPS
+    'anime',
+
     'core',
     'rest_framework',
     'rest_framework.authtoken',

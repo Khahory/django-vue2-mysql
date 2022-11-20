@@ -115,3 +115,16 @@ REST_FRAMEWORK = {
     ]
 }
 ```
+
+11. Creamos el modelo y la importamos en settings.py
+
+```
+python manage.py startapp anime
+```
+
+12. Despues de crear un modelos debemos hacer migraciones
+
+```
+python manage.py makemigrations
+python manage.py migrate
+```
