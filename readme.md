@@ -20,7 +20,7 @@ pillow==9.3.0
 django-admin startproject core .
 ``
 
-4. Modificamos el archivo settings.py
+4. Modificamos el archivo settings.py agregando nuestras variables env
 
 ````python
 
@@ -39,4 +39,20 @@ environ.Env.read_env()
 SECRET_KEY = env('SECRET_KEY')
 DEBUG = env('DEBUG')
 ````
+
+5. Agregamos nustras APPS a django
+
+```
+    'core',
+    'rest_framework',
+    'rest_framework.authtoken',
+    'corsheaders',
+```
+
+6. Agregamos el middleware de corsheaders
+
+```
+    # Corsheaders
+    "corsheaders.middleware.CorsMiddleware",
+```
 
