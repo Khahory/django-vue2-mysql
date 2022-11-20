@@ -95,6 +95,14 @@ WSGI_APPLICATION = 'core.wsgi.application'
 
 DATABASES = {
     'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'cardanime_django',
+        'USER': 'root',
+        'PASSWORD': '',
+        'HOTS': 'localhost',
+        'PORT': ''
+    },
+    'sqlite3': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
