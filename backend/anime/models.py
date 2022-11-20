@@ -10,7 +10,7 @@ def user_directory_path(instance, filename):
 class Anime(models.Model):
     class AnimeObjects(models.Manager):
         def get_queryset(self):
-            return super().get_queryset().filter(status='concluido')
+            return super().get_queryset().filter(estado='emision')
 
     # los estados -> si es draft, solo quien lo creo podra verlo, published sera para todos los users
     options = (
