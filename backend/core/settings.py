@@ -5,20 +5,19 @@ from corsheaders.defaults import default_headers
 import os
 import environ
 
-env = environ.Env(
-    # predeterminado vene False DEBUG
-    DENUG=(bool, False)
-)
+env = environ.Env()
 # reading .env file
 environ.Env.read_env()
 
 SECRET_KEY = env('SECRET_KEY')
-DEBUG = env('DEBUG')
+DEBUG = True
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    '192.168.0.5'
+]
 
 
 # Application definition
@@ -42,7 +41,8 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     # Corsheaders
-    "corsheaders.middleware.CorsMiddleware",
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
 
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -60,6 +60,7 @@ CORS_ORIGIN_WHITELIST = (
 
     'http://localhost:8080',
     'http://127.0.0.1:8080',
+    'http://192.168.0.5:8080',
 
     'http://localhost:3000',
     'http://127.0.0.1:3000',

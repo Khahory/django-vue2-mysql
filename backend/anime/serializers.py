@@ -7,4 +7,3 @@ class AnimeSerializer(serializers.ModelSerializer):
         # fields = '__all__'
         model = Anime
         fields = ('id', 'titulo', 'descripcion', 'image', 'slug', 'concluido', 'estado')
-        # fields = ('id', 'estado')
