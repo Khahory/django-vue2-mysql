@@ -11,8 +11,8 @@ const routes = [
         component: HomeView
     },
     {
-        path: '/anime',
-        name: 'anime',
+        path: '/animes',
+        name: 'animes',
         component: () => import(/* webpackChunkName: "anime" */ '../views/AnimeView.vue')
     }
 ]

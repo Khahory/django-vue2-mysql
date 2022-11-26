@@ -1,10 +1,19 @@
 <template>
-    <h2>Anime View</h2>
+    <div>
+        <h2 class="title">Anime View</h2>
+        <AnimeList />
+    </div>
 </template>
 
 <script>
+//imports
+import AnimeList from "@/components/AnimeList";
+
 export default {
-    name: "AnimeView"
+    name: "AnimeView",
+    components: {
+        AnimeList
+    }
 }
 </script>
 

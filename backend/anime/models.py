@@ -4,7 +4,10 @@ from django.utils import timezone
 
 # donde guardaremos la imagen
 def user_directory_path(instance, filename):
-    return 'anime/{0}/{1}'.format(instance.titulo, filename)
+    nombre_carpeta = instance.titulo.replace(" ", "_")
+    nombre_carpeta = nombre_carpeta.replace(":", "_")
+    nombre_carpeta = nombre_carpeta.lower()
+    return 'anime/{0}/{1}'.format(nombre_carpeta, filename)
 
 
 class Anime(models.Model):
