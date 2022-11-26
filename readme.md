@@ -208,3 +208,12 @@ urlpatterns = [
 ```
 path('anime/', include('anime.urls', namespace='anime')),
 ```
+
+19. Creamos el frontend VUE
+
+```
+vue create frontend
+manually select features
+babel, router, css pre-processors
+```
+
